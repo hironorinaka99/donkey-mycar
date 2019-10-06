@@ -23,6 +23,9 @@
 # CAMERA_TYPE = "PICAM"   # (PICAM|WEBCAM|CVCAM|CSIC|V4L|MOCK)
 # IMAGE_W = 160
 # IMAGE_H = 120
+
+# IMAGE_H = 160 #Doubleカメラ用
+
 # IMAGE_DEPTH = 3         # default RGB=3, make 1 for mono
 # CAMERA_FRAMERATE = DRIVE_LOOP_HZ
 # # For CSIC camera - If the camera is mounted in a rotated position, changing the below parameter will correct the output frame orientation
@@ -40,15 +43,16 @@
 # DRIVE_TRAIN_TYPE = "SERVO_ESC" # SERVO_ESC|DC_STEER_THROTTLE|DC_TWO_WHEEL|SERVO_HBRIDGE_PWM
 # 
 # #STEERING
-# STEERING_CHANNEL = 1            #channel on the 9685 pwm board 0-15
-# STEERING_LEFT_PWM = 460         #pwm value for full left steering
-# STEERING_RIGHT_PWM = 290        #pwm value for full right steering
+STEERING_CHANNEL = 0            #channel on the 9685 pwm board 0-15
+STEERING_LEFT_PWM = 430         #pwm value for full left steering  元の設定
+STEERING_RIGHT_PWM = 290        #pwm value for full right steering
+
 # 
 # #THROTTLE
-# THROTTLE_CHANNEL = 0            #channel on the 9685 pwm board 0-15
-# THROTTLE_FORWARD_PWM = 500      #pwm value for max forward throttle
-# THROTTLE_STOPPED_PWM = 370      #pwm value for no movement
-# THROTTLE_REVERSE_PWM = 220      #pwm value for max reverse throttle
+THROTTLE_CHANNEL = 1            #channel on the 9685 pwm board 0-15
+THROTTLE_FORWARD_PWM = 500      #pwm value for max forward throttle
+THROTTLE_STOPPED_PWM = 370      #pwm value for no movement
+THROTTLE_REVERSE_PWM = 220      #pwm value for max reverse throttle #280
 # 
 # #DC_STEER_THROTTLE with one motor as steering, one as drive
 # #these GPIO pinouts are only used for the DRIVE_TRAIN_TYPE=DC_STEER_THROTTLE
@@ -70,6 +74,8 @@
 # #between different neural network designs. You can override this setting by passing the command
 # #line parameter --type to the python manage.py train and drive commands.
 # DEFAULT_MODEL_TYPE = 'linear'   #(linear|categorical|rnn|imu|behavior|3d|localizer|latent)
+DEFAULT_MODEL_TYPE = 'categorical'   #(linear|categorical|rnn|imu|behavior|3d|localizer|latent)
+
 # BATCH_SIZE = 128                #how many records to use when doing one pass of gradient decent. Use a smaller number if your gpu is running out of memory.
 # TRAIN_TEST_SPLIT = 0.8          #what percent of records to use for training. the remaining used for validation.
 # MAX_EPOCHS = 100                #how many times to visit all records of your data
